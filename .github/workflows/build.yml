@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repo
+    - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Install cc65
+    - name: Install cc65 (NES C compiler)
       run: |
         sudo apt-get update
         sudo apt-get install -y cc65
@@ -22,11 +22,10 @@ jobs:
       run: |
         make clean
         make all
-      working-directory: .
+      working-directory: .  # ensures it runs in repo root
 
     - name: Upload ROM artifact
       uses: actions/upload-artifact@v3
       with:
         name: delta-dash-nes
         path: delta_dash.nes
-        
