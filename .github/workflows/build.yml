@@ -22,10 +22,11 @@ jobs:
       run: |
         make clean
         make all
-      working-directory: .  # ensures it runs in repo root
+      working-directory: .
 
     - name: Upload ROM artifact
       uses: actions/upload-artifact@v3
       with:
         name: delta-dash-nes
         path: delta_dash.nes
+        if-no-files-found: error
